@@ -1,9 +1,14 @@
+import { Outlet } from "react-router-dom";
+import Header from "../components/header/header/Header";
+import Footer from "../components/Footer/Footer";
 
 
 const Root = () => {
     return (
         <div>
-            This is root folder
+            <Header/>
+            <Outlet/>
+            <Footer/>
         </div>
     );
 };
