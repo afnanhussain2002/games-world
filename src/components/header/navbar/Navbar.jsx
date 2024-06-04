@@ -2,10 +2,20 @@ import { useContext } from "react";
 import { AuthContext } from "../../../provider/AuthProvider/AuthProvider";
 import Menu from "../menu/Menu";
 import Logo from "../logo/Logo";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const {user} = useContext(AuthContext)
+  const {user, logout} = useContext(AuthContext)
   console.log(user);
+  const handleSignOut = () =>{
+    logout()
+    .then(() =>{
+
+    })
+    .catch(err =>{
+      console.log(err);
+    })
+  }
   return (
     <>
       <div className="navbar bg-transparent absolute z-40">
@@ -43,13 +53,16 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {
-            user ? <div className="avatar">
+            user ? <>
+            <div className="avatar">
             <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src={user.photoUrl ? user.photoUrl : 'https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png'} />
             </div>
           </div>
+          <button onClick={handleSignOut} className="btn btn-sm ml-3">Sign Out</button>
+            </>
           :
-          <a className="btn">Button</a>
+          <Link to={'/login'}><button className="btn">Sign In</button></Link>
 
           }
         </div>
