@@ -66,7 +66,7 @@ const Navbar = () => {
                   <img
                     src={
                       user?.photoURL
-                        ? user.photoURL
+                        ? user?.photoURL
                         : "https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png"
                     }
                   />
