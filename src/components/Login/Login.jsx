@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
-import auth from "../../firebase/firebase.config";
 import SocialSign from "../socialSign/SocialSign";
 
 
@@ -40,7 +39,7 @@ const Login = () => {
         {/*  <!-- Right Pane --> */}
          <div className="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
            <div className="max-w-md w-full p-6">
-             <h1 className="text-3xl font-semibold mb-6 text-black text-center">Sign In</h1>
+             <h1 className="text-3xl font-semibold mb-6 text-black text-center">Sign In <Link to={'/'}>Games World</Link></h1>
              <h1 className="text-sm font-semibold mb-6 text-gray-500 text-center">Join Our Community with all time access and free </h1>
              <div className="mt-4 flex flex-col lg:flex-row items-center justify-between">
               <SocialSign/>
