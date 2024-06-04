@@ -31,7 +31,7 @@ const Login = () => {
     return (
         <div className="flex h-screen">
         {/*  <!-- Left Pane --> */}
-         <div className="hidden lg:flex items-center justify-center flex-1 bg-[url('https://img.freepik.com/free-photo/full-shot-ninja-wearing-equipment_23-2150960926.jpg?t=st=1717218504~exp=1717222104~hmac=c619c11512926bea6ec2e42b9307ceb05b80e6028c885d0ae3ce5e2f5e88fd64&w=1380')] bg-cover text-black">
+         <div className="hidden lg:flex items-center justify-center flex-1 bg-[url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/06/elden-ring-shadow-of-the-erdtree-preview.jpg?q=70&fit=contain&w=1140&h=&dpr=1')] bg-center bg-cover text-black">
            <div className="max-w-lg text-center">
            
            </div>
