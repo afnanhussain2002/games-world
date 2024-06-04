@@ -1,7 +1,36 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
+
+    const [registerError, setRegisterError] = useState('')
+    const [registerSuccess, setRegisterSuccess] = useState('')
+
+    const {createUser} = useContext(AuthContext)
+
+    const handleRegister = e =>{
+        e.preventDefault()
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        setRegisterError('')
+        setRegisterSuccess('')
+        createUser(email, password)
+        .then(result =>{
+            console.log(result.user);
+            updateProfile()
+            setRegisterSuccess('User Created Successfully')
+        })
+        .catch(err =>{
+            console.log(err.message);
+            setRegisterError(err.message)
+        })
+    }
     return (
                  
 <div className="flex h-screen">
@@ -36,7 +65,7 @@ const Register = () => {
       <div className="mt-4 text-sm text-gray-600 text-center">
         <p>or with email</p>
       </div>
-      <form action="#" method="POST" className="space-y-4">
+      <form onSubmit={handleRegister} method="POST" className="space-y-4">
        {/*  <!-- htmlForm elements --> */}
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -58,8 +87,17 @@ const Register = () => {
           <button type="submit" className="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">Sign Up</button>
         </div>
       </form>
+      <div>
+      {
+        registerError ?  <p className="text-red-500">{registerError}</p>
+        :
+        <p className="text-green-500">{registerSuccess}</p>
+        
+      }
+      
+      </div>
       <div className="mt-4 text-sm text-gray-600 text-center">
-        <p>Already have an account? <Link to={'/login'} className="text-black hover:underline">Sign In here</Link>
+        <p>Already have an account? <Link to={'/login'} className="text-black font-semibold hover:underline">Sign In</Link>
         </p>
       </div>
     </div>
