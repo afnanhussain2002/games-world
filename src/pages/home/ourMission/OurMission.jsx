@@ -2,7 +2,7 @@
 
 const OurMission = () => {
     return (
-        <div className="hero min-h-96 bg-black bg-opacity-50">
+        <div className="hero min-h-96 bg-black bg-opacity-50 rounded-b-2xl">
       <div className="hero-content flex-col lg:flex-row">
         <div className="flex-1">
           <h1 className="text-5xl font-bold text-white">Our <span className="text-mainColor">Mission</span></h1>

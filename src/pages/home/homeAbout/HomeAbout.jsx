@@ -1,6 +1,6 @@
 const HomeAbout = () => {
   return (
-    <div className="hero min-h-96 bg-black bg-opacity-50">
+    <div className="hero min-h-96 bg-black bg-opacity-50 rounded-t-2xl">
       <div className="hero-content flex-col lg:flex-row">
         <img
           src="https://i.ibb.co/bXLz1Ds/Untitled-design-21.png" 
