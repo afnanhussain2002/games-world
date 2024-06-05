@@ -24,7 +24,7 @@ const Navbar = () => {
       });
   };
   return (
-    <>
+    <div className="">
       <div className="navbar bg-transparent absolute z-40">
         <div className="navbar-start">
           <div className="dropdown">
@@ -83,7 +83,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
