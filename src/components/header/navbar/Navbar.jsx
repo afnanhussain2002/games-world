@@ -24,11 +24,11 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="">
-      <div className="navbar bg-transparent absolute z-40">
+    <div className="flex justify-center">
+      <div className="navbar bg-transparent absolute z-40 max-w-7xl ">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
