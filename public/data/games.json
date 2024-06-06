@@ -1,5 +1,4 @@
-{
-    "games": [
+ [
       {
         "id": 1,
         "title": "Epic Adventure",
@@ -67,5 +66,5 @@
         }
       }
     ]
-  }
+  
   

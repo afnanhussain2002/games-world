@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Game = ({ game }) => {
   const {
     id,
@@ -15,6 +17,7 @@ const Game = ({ game }) => {
   } = game;
   return (
     <>
+    <Link to={`/${id}`}>
       <div className="max-w-sm rounded-lg overflow-hidden shadow-lg grid bg-mainColor">
         <img className="w-full h-64" src={banner_img} alt={title} />
         <div className="px-6 py-4">
@@ -33,6 +36,8 @@ const Game = ({ game }) => {
           </span>
         </div>
       </div>
+    
+    </Link>
     </>
   );
 };

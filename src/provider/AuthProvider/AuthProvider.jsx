@@ -17,7 +17,15 @@ const facebookProvider = new FacebookAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true)
+  const [games, setGames] = useState([])
 
+  // load all data
+  useEffect(()=>{
+    fetch('./data/games.json')
+    .then(res => res.json())
+    .then(data => setGames(data))
+  },[])
+ 
   // create a user with email and password
   const createUser = (email, password) => {
     setLoading(true)
@@ -63,6 +71,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const authInfo = {
+    games,
     user,
     loading,
     createUser,

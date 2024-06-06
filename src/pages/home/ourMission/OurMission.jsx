@@ -5,7 +5,7 @@ const OurMission = () => {
         <div className="hero min-h-96 bg-black bg-opacity-50 rounded-b-2xl">
       <div className="hero-content flex-col-reverse lg:flex-row">
         <div className="flex-1">
-          <h1 className="text-5xl font-bold text-white">Our <span className="text-mainColor">Mission</span></h1>
+          <h1 className="text-5xl font-bold text-white">Our <span className="text-mainColor py-2 px-1 rounded-md bg-white">Mission</span></h1>
           <p className="py-6 text-white max-w-2xl">
           At Games World, we strive to provide a comprehensive platform that caters to both players and creators. Whether you’re looking to discover your next favorite game, stay updated with the latest industry news, or dive into game development, we have something for you. Our goal is to make gaming accessible, enjoyable, and inspiring for everyone.
 

@@ -5,7 +5,7 @@ import Services from "../pages/services/Services";
 import About from "../pages/about/About";
 import Register from "../components/register/Register";
 import Login from "../components/Login/Login";
-import PrivateRoute from "../provider/privateRoute/PrivateRoute";
+import GameDetails from "../pages/gameDetails/GameDetails";
 
 const router = createBrowserRouter([
     {
@@ -22,7 +22,12 @@ const router = createBrowserRouter([
             },
             {
                 path:'/services',
-                element:<PrivateRoute><Services/></PrivateRoute>
+                element:<Services/>
+            },
+            {
+                path:'/:id',
+                element:<GameDetails/>
+
             }
         ]
     },
