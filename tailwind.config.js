@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors:{
-        'mainColor':'#a21caf'
+        'mainColor':'#2C6771'
       }
     },
     daisyui: {

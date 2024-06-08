@@ -7,7 +7,7 @@ const Menu = () => {
      <NavLink
   to="/"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-mainColor font-bold" : ""
+    isPending ? "pending" : isActive ? "text-mainColor font-bold bg-white" : ""
   }
 >
   HOME
@@ -17,22 +17,13 @@ const Menu = () => {
      <NavLink
   to="/about"
   className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-mainColor font-bold" : ""
+    isPending ? "pending" : isActive ? "text-mainColor font-bold bg-white" : ""
   }
 >
   ABOUT US
 </NavLink>
      </li>
-     <li className="text-white font-bold">
-     <NavLink
-  to="/services"
-  className={({ isActive, isPending }) =>
-    isPending ? "pending" : isActive ? "text-mainColor font-bold" : ""
-  }
->
-  SERVICE
-</NavLink>
-     </li>
+    
     </>
     return menu
 };
