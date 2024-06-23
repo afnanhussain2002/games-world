@@ -6,13 +6,17 @@ import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 
 const GameDetails = () => {
     // const data = useLoaderData()
-    const {games} = useContext(AuthContext)
+    const {games, loading} = useContext(AuthContext)
     const {id} = useParams()
     console.log('data',games);
     console.log('id',id);
    
 
     const filterGame =games?.find((singleGame) => singleGame.id == id)
+
+    if(loading){
+      return <div><span className="loading loading-bars loading-lg"></span></div>
+    }
 
     console.log(filterGame);
     const {
