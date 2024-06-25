@@ -10,3 +10,6 @@ app.get('/', (req, res) =>{
     res.send('Game World Server')
 })
 
+app.listen(port, () =>{
+    console.log(`Server is Running on Port${port}`);
+})
