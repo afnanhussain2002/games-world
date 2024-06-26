@@ -100,9 +100,9 @@ async function run() {
 
     app.get('/cart', verifyToken, async(req,res) =>{
       let query = {}
-      /* if (req.query.email !== req.user.email) {
+      if (req.query.email !== req.user.email) {
         return res.status(403).send({message:'forbidden access'})
-      } */
+      }
       if (req.query?.email) {
         query = {userEmail: req.query.email}
       }
