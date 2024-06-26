@@ -35,7 +35,9 @@ const GameDetails = () => {
         media,
       } = detailsGame;
 
-     
+     const handleAddToCart = () =>{
+      
+     }
 
     return (
         <>
@@ -73,7 +75,7 @@ const GameDetails = () => {
              <p><span className="font-bold">Developer: {developer}</span></p><br />
              <p><span className="font-bold">Publisher: {publisher}</span></p><br />
              <p><span className="font-bold">Release Date: {release_date}</span></p><br />
-             <button className="btn bg-mainColor text-white">Add To Cart</button>
+             <button onClick={handleAddToCart} className="btn bg-mainColor text-white">Add To Cart</button>
         </div>
       </div>
       <div>

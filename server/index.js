@@ -51,7 +51,7 @@ async function run() {
       res.send(allGames)
     })
 
-    // read data using user email
+    // read cart data using user email
 
     app.get('/cart', async(req,res) =>{
       let query = {}
@@ -60,6 +60,15 @@ async function run() {
       }
       const result = await cartCollection.find(query).toArray();
       res.send(result)
+    })
+
+    // Add user product on cart
+
+    app.post('/cart', async(req,res) =>{
+      const game = req.body
+      const result = await cartCollection.insertOne(game)
+      res.send(result)
+
     })
     
 
@@ -74,9 +83,7 @@ async function run() {
 run().catch(console.dir);
 
 
-
-
-
+// server main port and main route
 app.get('/', (req, res) =>{
     res.send('Game World Server')
 })
