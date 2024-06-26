@@ -76,7 +76,7 @@ const Navbar = () => {
               <button onClick={handleSignOut} className="btn btn-sm ml-3">
                 Sign Out
               </button>
-              <Link to={'/cart'}><button><FaCartArrowDown/></button></Link>
+              <Link to={'/cart'}><button className="btn"><FaCartArrowDown/></button></Link>
             </>
           ) : (
             <Link to={"/login"}>
