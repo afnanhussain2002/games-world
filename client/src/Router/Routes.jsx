@@ -21,8 +21,9 @@ const router = createBrowserRouter([
             },
             
             {
-                path:'/:id',
-                element:<GameDetails/>
+                path:'/allGames/:id',
+                element:<GameDetails/>,
+                loader:({params}) => fetch(`http://localhost:5000/allGames/${params.id}`)
 
             }
         ]

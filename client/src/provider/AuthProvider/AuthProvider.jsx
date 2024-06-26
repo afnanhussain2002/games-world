@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
   // load all data
   useEffect(()=>{
-    fetch('./data/games.json')
+    fetch('http://localhost:5000/allGames')
     .then(res => res.json())
     .then(data => setGames(data))
   },[])

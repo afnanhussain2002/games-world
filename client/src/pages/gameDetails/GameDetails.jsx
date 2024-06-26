@@ -1,6 +1,6 @@
 
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 
 
@@ -10,6 +10,7 @@ const GameDetails = () => {
     const {id} = useParams()
     console.log('data',games);
     console.log('id',id);
+    const detailsGame = useLoaderData()
    
 
     const filterGame =games?.find((singleGame) => singleGame.id == id)
@@ -32,9 +33,9 @@ const GameDetails = () => {
         rating,
         price,
         media,
-      } = filterGame;
+      } = detailsGame;
 
-      console.log('videos',media.videos[0]);
+     
 
     return (
         <>

@@ -4,7 +4,7 @@ import { FaStar, FaRegStar  } from "react-icons/fa";
 
 const Game = ({ game }) => {
   const {
-    id,
+    _id,
     title,
     banner_img,
     description,
@@ -19,7 +19,7 @@ const Game = ({ game }) => {
   } = game;
   return (
     <>
-      <Link to={`/${id}`}>
+      <Link to={`/allGames/${_id}`}>
         <div className="max-w-sm rounded-lg overflow-hidden shadow-lg grid bg-mainColor">
           <img className="w-full h-64" src={banner_img} alt={title} />
           <div className="px-6 py-4">

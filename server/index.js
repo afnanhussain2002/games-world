@@ -36,18 +36,20 @@ async function run() {
       res.send(result)
     })
 
+
+    // read a single data
+    app.get('/allGames/:id', async(req,res) =>{
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)}
+      const result = await allGamesCollection.findOne(query)
+      res.send(result)
+   })
     // read the data
     app.get('/allGames', async(req,res) =>{
       const allGames = await allGamesCollection.find().toArray()
       res.send(allGames)
     })
-    // read a single data
-    app.get('/allGames/:id', async(req,res) =>{
-       const id = req.params.id;
-       const query = {_id: new ObjectId(id)}
-       const result = await allGamesCollection.findOne(query)
-       res.send(result)
-    })
+    
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
