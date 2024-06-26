@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 import SocialSign from "../socialSign/SocialSign";
+import axios from "axios"
 
 
 const Login = () => {
@@ -21,7 +22,13 @@ const Login = () => {
         loginUser( email, password)
         .then(result =>{
             console.log(result.user);
-            setLoginSuccess('Sign In Successfully')
+            // setLoginSuccess('Sign In Successfully')
+            const user = {email}
+            axios.post('http://localhost:5000/jwt', user, {withCredentials:true})
+            .then(res =>{
+              console.log(res.data);
+
+            })
         })
         .catch(err =>{
             console.log(err.message);

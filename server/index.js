@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const cookieParser =require('cookie-parser')
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const cookieParser =require('cookie-parser')
 const app = express()
 require("dotenv").config();
 const port = process.env.PORT || 5000;
@@ -18,6 +18,7 @@ app.use(cookieParser())
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.wpyq7sp.mongodb.net/?appName=Cluster0`;
 
+
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -27,12 +28,32 @@ const client = new MongoClient(uri, {
   }
 });
 
+// my middle wares
+
+const verifyToken = async(req,res,next) =>{
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(401).send({message:'unauthorized'})
+  }
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, decoded) =>{
+    req.user = decoded
+  })
+  next()
+}
+
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
-    // use jwt
+  
+    
+    // connect to database 
+    const database = client.db("gameWorldDB");
+    const allGamesCollection = database.collection("game")
+    const cartCollection = database.collection("cart")
+
+      // use jwt
   app.post('/jwt', async(req,res) =>{
     const user = req.body;
     console.log(user);
@@ -45,11 +66,6 @@ async function run() {
     })
     .send({success:true})
   })
-    
-    // connect to database 
-    const database = client.db("gameWorldDB");
-    const allGamesCollection = database.collection("game")
-    const cartCollection = database.collection("cart")
     // create data
     app.post('/allGames', async(req,res) =>{
       const game = req.body;
@@ -82,8 +98,11 @@ async function run() {
 
     // read cart data using user email
 
-    app.get('/cart', async(req,res) =>{
+    app.get('/cart', verifyToken, async(req,res) =>{
       let query = {}
+      /* if (req.query.email !== req.user.email) {
+        return res.status(403).send({message:'forbidden access'})
+      } */
       if (req.query?.email) {
         query = {userEmail: req.query.email}
       }

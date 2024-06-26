@@ -8,7 +8,9 @@ const CartPage = () => {
 
   useEffect(() => {
     if (!loading && user?.email) {
-      fetch(`http://localhost:5000/cart?email=${user.email}`)
+      fetch(`http://localhost:5000/cart?email=${user.email}`,{
+        credentials:'include'
+      })
         .then((res) => res.json())
         .then((data) => {
           setCartGames(data);
