@@ -73,7 +73,7 @@ const GameDetails = () => {
              <p><span className="font-bold">Developer: {developer}</span></p><br />
              <p><span className="font-bold">Publisher: {publisher}</span></p><br />
              <p><span className="font-bold">Release Date: {release_date}</span></p><br />
-             <a href="https://tinyurl.com/buyPcGames" className="btn bg-mainColor text-white">Buy Now</a>
+             <button className="btn bg-mainColor text-white">Add To Cart</button>
         </div>
       </div>
       <div>
