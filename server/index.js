@@ -29,6 +29,7 @@ async function run() {
     // connect to database 
     const database = client.db("gameWorldDB");
     const allGamesCollection = database.collection("game")
+    const cartCollection = database.collection.apply("cart")
     // create data
     app.post('/allGames', async(req,res) =>{
       const game = req.body;
@@ -48,6 +49,17 @@ async function run() {
     app.get('/allGames', async(req,res) =>{
       const allGames = await allGamesCollection.find().toArray()
       res.send(allGames)
+    })
+
+    // read data using user email
+
+    app.get('/cart', async(req,res) =>{
+      let query = {}
+      if (req.query?.email) {
+        query = {email: req.query.email}
+      }
+      const result = await cartCollection.find(query).toArray();
+      res.send(result)
     })
     
 
