@@ -29,7 +29,7 @@ async function run() {
     // connect to database 
     const database = client.db("gameWorldDB");
     const allGamesCollection = database.collection("game")
-    const cartCollection = database.collection.apply("cart")
+    const cartCollection = database.collection("cart")
     // create data
     app.post('/allGames', async(req,res) =>{
       const game = req.body;
@@ -51,6 +51,15 @@ async function run() {
       res.send(allGames)
     })
 
+    // Add user product on cart
+
+    app.post('/cart', async(req,res) =>{
+      const game = req.body
+      const result = await cartCollection.insertOne(game)
+      res.send(result)
+
+    })
+
     // read cart data using user email
 
     app.get('/cart', async(req,res) =>{
@@ -62,14 +71,7 @@ async function run() {
       res.send(result)
     })
 
-    // Add user product on cart
-
-    app.post('/cart', async(req,res) =>{
-      const game = req.body
-      const result = await cartCollection.insertOne(game)
-      res.send(result)
-
-    })
+    
     
 
     // Send a ping to confirm a successful connection

@@ -5,6 +5,7 @@ import About from "../pages/about/About";
 import Register from "../components/register/Register";
 import Login from "../components/Login/Login";
 import GameDetails from "../pages/gameDetails/GameDetails";
+import PrivateRoute from "../provider/privateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
             
             {
                 path:'/allGames/:id',
-                element:<GameDetails/>,
+                element:<PrivateRoute><GameDetails/></PrivateRoute>,
                 loader:({params}) => fetch(`http://localhost:5000/allGames/${params.id}`)
 
             }

@@ -1,25 +1,21 @@
 
 import { useContext } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const GameDetails = () => {
     // const data = useLoaderData()
-    const {games, loading} = useContext(AuthContext)
-    const {id} = useParams()
-    console.log('data',games);
-    console.log('id',id);
+    const {user, loading} = useContext(AuthContext)
     const detailsGame = useLoaderData()
-   
-
-    const filterGame =games?.find((singleGame) => singleGame.id == id)
 
     if(loading){
       return <div><span className="loading loading-bars loading-lg"></span></div>
     }
 
-    console.log(filterGame);
+    
     const {
       
         title,
@@ -34,9 +30,24 @@ const GameDetails = () => {
         price,
         media,
       } = detailsGame;
+      const userEmail = user.email 
+
+      const cartItem = {title, rating, price, banner_img, userEmail  }
 
      const handleAddToCart = () =>{
-      
+       axios.post('http://localhost:5000/cart', cartItem)
+       .then(res =>{
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "This Game Was Added To Your Cart Page",
+            showConfirmButton: false,
+            timer: 1500,
+          })
+        }
+       })
      }
 
     return (
