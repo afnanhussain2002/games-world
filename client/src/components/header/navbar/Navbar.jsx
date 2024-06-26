@@ -4,6 +4,7 @@ import Menu from "../menu/Menu";
 import Logo from "../logo/Logo";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -75,6 +76,7 @@ const Navbar = () => {
               <button onClick={handleSignOut} className="btn btn-sm ml-3">
                 Sign Out
               </button>
+              <Link to={'/cart'}><button><FaCartArrowDown/></button></Link>
             </>
           ) : (
             <Link to={"/login"}>
