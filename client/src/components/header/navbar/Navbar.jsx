@@ -5,20 +5,28 @@ import Logo from "../logo/Logo";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaCartArrowDown } from "react-icons/fa";
+import axios from 'axios'
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   console.log(user);
+  const currentUser = user?.email
   const handleSignOut = () => {
     logout()
       .then(() => {
-        Swal.fire({
+        
+        axios.post('http://localhost:5000/logout', currentUser, {withCredentials:true})
+        .then(res =>{
+          if (res.data.success) {
+            Swal.fire({
           position: "top-end",
           icon: "success",
           title: "Sign Out successfully",
           showConfirmButton: false,
           timer: 1500,
         });
+          }
+        })
       })
       .catch((err) => {
         console.log(err);

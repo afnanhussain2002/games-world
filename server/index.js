@@ -109,7 +109,11 @@ async function run() {
       const result = await cartCollection.find(query).toArray();
       res.send(result)
     })
+// remove token after user logout
 
+app.post('/logout', (req,res) =>{
+  res.clearCookie('token',{maxAge:0}).send({success:true})
+})
     
     
 
