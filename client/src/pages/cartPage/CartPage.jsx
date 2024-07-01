@@ -1,23 +1,31 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
+import useAxiosSecure from "../../hooks/axiosSecure/useAxiosSecure";
 
 const CartPage = () => {
   const { user, loading } = useContext(AuthContext);
   const [cartGames, setCartGames] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
+  const axiosSecure = useAxiosSecure()
 
   useEffect(() => {
     if (!loading && user?.email) {
-      fetch(`http://localhost:5000/cart?email=${user.email}`,{
+      /* fetch(`http://localhost:5000/cart?email=${user.email}`,{
         credentials:'include'
       })
         .then((res) => res.json())
         .then((data) => {
           setCartGames(data);
           setIsFetching(false);
-        });
+        }); */
+        axiosSecure.get(`http://localhost:5000/cart?email=${user.email}`)
+        .then(res =>{
+          setCartGames(res.data)
+          setIsFetching(false)
+        })
+        
     }
-  }, [user, loading]);
+  }, [user, loading, axiosSecure]);
 
   if (loading || isFetching) {
     return <span>Loading...</span>;
